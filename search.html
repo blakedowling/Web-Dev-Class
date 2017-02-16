@@ -1,0 +1,1017 @@
+<div class="sciwrapper">
+    <div id="scicrumb" style="opacity: 1;">
+        <ul class="crumb">
+            <li class="lastcrumb">
+                <span class="largecrumb">Search</span>
+                <span class="smallcrumb">Search</span>
+            </li>
+        </ul>
+      <div class="tabBar">
+        <ul class="tabs">
+          <li class="tab citab">
+            <a href="javascript:void(0);" onclick="getSci();"><span class="tablabel">Citation Index</span></a>
+          </li><li class="tab conttab">
+            <a href="javascript:void(0);" onclick="getContents();"><span class="tablabel">Contents</span></a>
+          </li><li class="tab speaktab">
+            <a href="javascript:void(0);" onclick="getSpeaker();"><span class="tablabel">Speakers</span></a>
+          </li><li class="tab searchtab">
+            <a href="javascript:void(0);" onclick="getSearch();"><span class="tablabel">Search</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div id="scisearch" class="scicontent nano"><div class="nano-content">
+        <div id="searchWhatWrapper">
+            <div class="btn-group active" id="searchWhat">
+                <a href="javascript:void(0);" onclick="showTalkSearch();" id="showTalksButton" title="Search in talks" class="btn btn-inverse" disabled>Talks</a>
+                <a href="javascript:void(0);" onclick="showScriptureSearch();" id="showScripturesButton" title="Search in scriptures" class="btn">Scriptures</a>
+            </div>
+        </div>
+        <div id="searchInput">
+            <input type="text" id="searchTerms" class="asInput" placeholder="Search" title="Enter your search terms" onkeyup="startSearch(event);">
+        </div>
+        <!-- Scripture Search Form -->
+        <div id="searchScripturesWrapper" class="hidden">
+            <form id="searchScriptures" action="javascript:searchScriptures();">
+                <label class="checkbox" title="Include passages from the Old Testament in results">
+                    <input id="OT" type="checkbox" checked="checked">Old Testament (KJV)
+                </label>
+                <label class="checkbox" title="Include passages from the New Testament in results">
+                    <input id="NT" type="checkbox" checked="checked">New Testament (KJV)
+                </label>
+                <label class="checkbox" title="Search JST verses that are footnotes in the LDS edition of the Bible">
+                    <input id="JSTF" type="checkbox" checked="checked">JST Footnotes
+                </label>
+                <label class="checkbox" title="Include passages from the Book of Mormon in results">
+                    <input id="BOM" type="checkbox" checked="checked">Book of Mormon
+                </label>
+                <label class="checkbox" title="Include passages from the Doctrine and Covenants in results">
+                    <input id="DC" type="checkbox" checked="checked">Doctrine and Covenants
+                </label>
+                <label class="checkbox" title="Include passages from the Pearl of Great Price in results">
+                    <input id="PGP" type="checkbox" checked="checked">Pearl of Great Price
+                </label>
+                <label class="checkbox" title="Include passages from the Joseph Smith Translations of the Bible in results">
+                    <input id="JST" type="checkbox">Joseph Smith Translation
+                </label>
+                <br />
+                <label class="checkbox" title="Leaving this box unchecked will sort results chronologially">
+                    <input id="scripturesSortBy" type="checkbox">Sort by Relevance
+                </label>
+            </form>
+            <div class="searchBtnWrapper">
+                <button id="scriptureSearchBtn" onclick="searchScriptures();" title="Start the search" class="btn searchbutton">Search</button>
+                <button id="resetScripturesForm" onclick="resetScripturesForm();" title="Reset search form to defaults" class="btn">Reset</button>
+            </div>
+        </div>
+        <!-- Talks Search Form -->
+        <div id="searchTalksWrapper">
+            <form id="searchTalks" action="javascript:searchTalks();">
+                <div class="advTitle">Speakers</div>
+                <div id="speakerSearchWrapper"><select id="speakerSearch" title="Which speaker(s) should be included in your search?">
+                    <option id="0" value="Any">-- Any --</option>
+                        <option id="1001" value="1001--Angel Abrea (AA)">Abrea, Angel</option>
+                        <option id="1414" value="1414--Marcos A. Aidukaitis (MAA)">Aidukaitis, Marcos A.</option>
+                        <option id="1002" value="1002--Andrea Allen (AnA)">Allen, Andrea</option>
+                        <option id="1003" value="1003--Richard D. Allred (RDA)">Allred, Richard D.</option>
+                        <option id="1411" value="1411--Silvia H. Allred (SHA)">Allred, Silvia H.</option>
+                        <option id="1458" value="1458--Jos&eacute; L. Alonso (JLA)">Alonso, José L.</option>
+                        <option id="1004" value="1004--Lino Alvarez (LA)">Alvarez, Lino</option>
+                        <option id="1005" value="1005--Carlos H. Amado (CHA)">Amado, Carlos H.</option>
+                        <option id="1006" value="1006--Athos M. Amor&iacute;m (AMA)">Amorím, Athos M.</option>
+                        <option id="1007" value="1007--H. Verlan Andersen (HVA)">Andersen, H. Verlan</option>
+                        <option id="1008" value="1008--Neil L. Andersen (NLA)">Andersen, Neil L.</option>
+                        <option id="1439" value="1439--Wilford W. Andersen (WWA)">Andersen, Wilford W.</option>
+                        <option id="1009" value="1009--Joseph Anderson (JA)">Anderson, Joseph</option>
+                        <option id="1440" value="1440--Koichi Aoyagi (KA)">Aoyagi, Koichi</option>
+                        <option id="1010" value="1010--Mar&iacute;a de Aranda (MA)">Aranda, María de</option>
+                        <option id="1011" value="1011--Dallas N. Archibald (DNA)">Archibald, Dallas N.</option>
+                        <option id="1459" value="1459--Ian S. Ardern (ISA)">Ardern, Ian S.</option>
+                        <option id="1345" value="1345--Mervyn B. Arnold (MBA)">Arnold, Mervyn B.</option>
+                        <option id="1012" value="1012--Carlos E. Asay (CEA)">Asay, Carlos E.</option>
+                        <option id="1503" value="1503--Brian K. Ashton (BKA)">Ashton, Brian K.</option>
+                        <option id="1013" value="1013--Marvin J. Ashton (MJA)">Ashton, Marvin J.</option>
+                        <option id="1298" value="1298--Marvin O. Ashton (MOA)">Ashton, Marvin O.</option>
+                        <option id="1014" value="1014--Wendell J. Ashton (WJA)">Ashton, Wendell J.</option>
+                        <option id="1015" value="1015--Eduardo Ayala (EA)">Ayala, Eduardo</option>
+                        <option id="1016" value="1016--Robert L. Backman (RLB)">Backman, Robert L.</option>
+                        <option id="1017" value="1017--M. Russell Ballard (MRB)">Ballard, M. Russell</option>
+                        <option id="1018" value="1018--W. Grant Bangerter (WGB)">Bangerter, W. Grant</option>
+                        <option id="1019" value="1019--Ben B. Banks (BBB)">Banks, Ben B.</option>
+                        <option id="1334" value="1334--Kristin Banner (KB)">Banner, Kristin</option>
+                        <option id="1501" value="1501--W. Mark Bassett (WMB)">Bassett, W. Mark</option>
+                        <option id="1020" value="1020--E. Ray Bateman (ERB)">Bateman, E. Ray</option>
+                        <option id="1021" value="1021--Merrill J. Bateman (MJB)">Bateman, Merrill J.</option>
+                        <option id="362" value="362--David S. Baxter (DSB)">Baxter, David S.</option>
+                        <option id="1441" value="1441--David L. Beck (DLB)">Beck, David L.</option>
+                        <option id="1022" value="1022--Julie B. Beck (JBB)">Beck, Julie B.</option>
+                        <option id="1023" value="1023--Janette Hales Beckham (JHB)">Beckham, Janette Hales</option>
+                        <option id="1348" value="1348--David A. Bednar (DAB)">Bednar, David A.</option>
+                        <option id="1464" value="1464--Randall K. Bennett (RKB)">Bennett, Randall K.</option>
+                        <option id="1024" value="1024--William H. Bennett (WHB)">Bennett, William H.</option>
+                        <option id="1299" value="1299--Adam S. Bennion (ASB)">Bennion, Adam S.</option>
+                        <option id="1300" value="1300--Lowell L. Bennion (LLB)">Bennion, Lowell L.</option>
+                        <option id="1301" value="1301--Samuel O. Bennion (SOB)">Bennion, Samuel O.</option>
+                        <option id="1349" value="1349--Ezra T. Benson (EtB)">Benson, Ezra T.</option>
+                        <option id="1025" value="1025--Ezra Taft Benson (ETB)">Benson, Ezra Taft</option>
+                        <option id="1500" value="1500--Jean B. Bingham (JbB)">Bingham, Jean B.</option>
+                        <option id="1302" value="1302--Albert E. Bowen (AEB)">Bowen, Albert E.</option>
+                        <option id="363" value="363--Shayne M. Bowen (SMB)">Bowen, Shayne M.</option>
+                        <option id="1337" value="1337--Kirstin Boyer (KiB)">Boyer, Kirstin</option>
+                        <option id="1026" value="1026--Marian R. Boyer (MrB)">Boyer, Marian R.</option>
+                        <option id="1027" value="1027--William R. Bradford (WRB)">Bradford, William R.</option>
+                        <option id="1028" value="1028--Ted E. Brewerton (TEB)">Brewerton, Ted E.</option>
+                        <option id="1029" value="1029--Bernard P. Brockbank (BPB)">Brockbank, Bernard P.</option>
+                        <option id="1030" value="1030--Monte J. Brough (MB)">Brough, Monte J.</option>
+                        <option id="1031" value="1031--Hugh B. Brown (HBB)">Brown, Hugh B.</option>
+                        <option id="1032" value="1032--L. Edward Brown (LEB)">Brown, L. Edward</option>
+                        <option id="1033" value="1033--Victor L. Brown (VLB)">Brown, Victor L.</option>
+                        <option id="1303" value="1303--Carl W. Buehner (CWB)">Buehner, Carl W.</option>
+                        <option id="1413" value="1413--Dean R. Burgess (DRB)">Burgess, Dean R.</option>
+                        <option id="1034" value="1034--H. David Burton (HDB)">Burton, H. David</option>
+                        <option id="1473" value="1473--Linda K. Burton (LKB)">Burton, Linda K.</option>
+                        <option id="1035" value="1035--Theodore M. Burton (TMB)">Burton, Theodore M.</option>
+                        <option id="1036" value="1036--F. Enzio Busche (FEB)">Busche, F. Enzio</option>
+                        <option id="1350" value="1350--George G. Bywater (GGB)">Bywater, George G.</option>
+                        <option id="1037" value="1037--C. Max Caldwell (CMC)">Caldwell, C. Max</option>
+                        <option id="1038" value="1038--Eran A. Call (EAC)">Call, Eran A.</option>
+                        <option id="1039" value="1039--Waldo P. Call (WPC)">Call, Waldo P.</option>
+                        <option id="1304" value="1304--Charles A. Callis (CAC)">Callis, Charles A.</option>
+                        <option id="1040" value="1040--Douglas L. Callister (DLC)">Callister, Douglas L.</option>
+                        <option id="1430" value="1430--Tad R. Callister (TRC)">Callister, Tad R.</option>
+                        <option id="1041" value="1041--Helio R. Camargo (HRC)">Camargo, Helio R.</option>
+                        <option id="1351" value="1351--Angus M. Cannon (AMC)">Cannon, Angus M.</option>
+                        <option id="1042" value="1042--Elaine A. Cannon (EC)">Cannon, Elaine A.</option>
+                        <option id="1043" value="1043--George I. Cannon (GIC)">Cannon, George I.</option>
+                        <option id="1352" value="1352--George Q. Cannon (GQC)">Cannon, George Q.</option>
+                        <option id="1353" value="1353--John Q. Cannon (JQC)">Cannon, John Q.</option>
+                        <option id="370" value="370--Craig A. Cardon (CaC)">Cardon, Craig A.</option>
+                        <option id="1442" value="1442--Bruce A. Carlson (BAC)">Carlson, Bruce A.</option>
+                        <option id="1044" value="1044--John K. Carmack (JKC)">Carmack, John K.</option>
+                        <option id="1354" value="1354--Albert Carrington (AC)">Carrington, Albert</option>
+                        <option id="1415" value="1415--G&eacute;rald Causs&eacute; (GC)">Caussé, Gérald</option>
+                        <option id="1045" value="1045--Sheldon F. Child (SFC)">Child, Sheldon F.</option>
+                        <option id="1431" value="1431--Yoon Hwan Choi (YHC)">Choi, Yoon Hwan</option>
+                        <option id="1053" value="1053--Albert Choules, Jr. (ACh)">Choules, Jr., Albert</option>
+                        <option id="1046" value="1046--Craig C. Christensen (CCC)">Christensen, Craig C.</option>
+                        <option id="1047" value="1047--Darwin B. Christensen (DBC)">Christensen, Darwin B.</option>
+                        <option id="1048" value="1048--Joe J. Christensen (JJC)">Christensen, Joe J.</option>
+                        <option id="1049" value="1049--Shirley D. Christensen (SDC)">Christensen, Shirley D.</option>
+                        <option id="1050" value="1050--Val. R. Christensen (VRC)">Christensen, Val. R.</option>
+                        <option id="1051" value="1051--ElRay L. Christiansen (ELC)">Christiansen, ElRay L.</option>
+                        <option id="1052" value="1052--D. Todd Christofferson (DTC)">Christofferson, D. Todd</option>
+                        <option id="1319" value="1319--J. Reuben Clark, Jr. (JRC)">Clark, Jr., J. Reuben</option>
+                        <option id="1496" value="1496--Kim B. Clark (KBC)">Clark, Kim B.</option>
+                        <option id="371" value="371--Don R. Clarke (DRC)">Clarke, Don R.</option>
+                        <option id="1054" value="1054--J. Richard Clarke (JrC)">Clarke, J. Richard</option>
+                        <option id="1325" value="1325--Rudger Clawson (RC)">Clawson, Rudger</option>
+                        <option id="1055" value="1055--L. Whitney Clayton (LWC)">Clayton, L. Whitney</option>
+                        <option id="1056" value="1056--Gayle M. Clegg (GMC)">Clegg, Gayle M.</option>
+                        <option id="1057" value="1057--Aileen H. Clyde (AHC)">Clyde, Aileen H.</option>
+                        <option id="1058" value="1058--Hilarie Cole (HC)">Cole, Hilarie</option>
+                        <option id="1059" value="1059--Gary J. Coleman (GJC)">Coleman, Gary J.</option>
+                        <option id="1060" value="1060--Spencer J. Condie (SJC)">Condie, Spencer J.</option>
+                        <option id="1460" value="1460--Carl B. Cook (CBC)">Cook, Carl B.</option>
+                        <option id="1061" value="1061--Gene R. Cook (GRC)">Cook, Gene R.</option>
+                        <option id="1404" value="1404--Mary N. Cook (MNC)">Cook, Mary N.</option>
+                        <option id="1062" value="1062--Quentin L. Cook (QLC)">Cook, Quentin L.</option>
+                        <option id="1063" value="1063--Richard E. Cook (REC)">Cook, Richard E.</option>
+                        <option id="1416" value="1416--Lawrence E. Corbridge (LEC)">Corbridge, Lawrence E.</option>
+                        <option id="1355" value="1355--Alfred Cordon (ACo)">Cordon, Alfred</option>
+                        <option id="1465" value="1465--J. Devn Cornish (JDC)">Cornish, J. Devn</option>
+                        <option id="1064" value="1064--Claudio R. M. Costa (CRC)">Costa, Claudio R. M.</option>
+                        <option id="1322" value="1322--Matthew Cowley (MC)">Cowley, Matthew</option>
+                        <option id="1065" value="1065--Rulon G. Craven (RGC)">Craven, Rulon G.</option>
+                        <option id="1332" value="1332--William J. Critchlow, Jr. (WJC)">Critchlow, Jr., William J.</option>
+                        <option id="1066" value="1066--Keith Crockett (KC)">Crockett, Keith</option>
+                        <option id="1067" value="1067--James A. Cullimore (JAC)">Cullimore, James A.</option>
+                        <option id="1068" value="1068--LeGrand R. Curtis, Jr. (LrC)">Curtis, Jr., LeGrand R.</option>
+                        <option id="1497" value="1497--LeGrand R. Curtis (LRC)">Curtis, LeGrand R.</option>
+                        <option id="1069" value="1069--Derek A. Cuthbert (DAC)">Cuthbert, Derek A.</option>
+                        <option id="1070" value="1070--Clinton L. Cutler (CLC)">Cutler, Clinton L.</option>
+                        <option id="376" value="376--Charles W. Dahlquist II (CWD)">Dahlquist II, Charles W.</option>
+                        <option id="1071" value="1071--Elaine S. Dalton (ESD)">Dalton, Elaine S.</option>
+                        <option id="1072" value="1072--Adhemar Damiani (AD)">Damiani, Adhemar</option>
+                        <option id="1476" value="1476--Dean M. Davies (DMD)">Davies, Dean M.</option>
+                        <option id="1073" value="1073--Julio E. D&aacute;vila (JED)">Dávila, Julio E.</option>
+                        <option id="349" value="349--Benjam&iacute;n De Hoyos (BDH)">De Hoyos, Benjamín</option>
+                        <option id="1074" value="1074--Douglas W. DeHaan (DWD)">DeHaan, Douglas W.</option>
+                        <option id="1076" value="1076--Robert K. Dellenbach (RKD)">Dellenbach, Robert K.</option>
+                        <option id="1077" value="1077--Royden G. Derrick (RGD)">Derrick, Royden G.</option>
+                        <option id="1078" value="1078--Sheri L. Dew (SLD)">Dew, Sheri L.</option>
+                        <option id="1422" value="1422--Ann M. Dibb (AMD)">Dibb, Ann M.</option>
+                        <option id="1079" value="1079--John B. Dickson (JBD)">Dickson, John B.</option>
+                        <option id="1080" value="1080--Charles A. Didier (CD)">Didier, Charles A.</option>
+                        <option id="1081" value="1081--Graham W. Doxey (GWD)">Doxey, Graham W.</option>
+                        <option id="1082" value="1082--Joanne B. Doxey (JbD)">Doxey, Joanne B.</option>
+                        <option id="1477" value="1477--Edward Dube (ED)">Dube, Edward</option>
+                        <option id="1356" value="1356--William C. Dunbar (WCD)">Dunbar, William C.</option>
+                        <option id="1454" value="1454--Kevin R. Duncan (KRD)">Duncan, Kevin R.</option>
+                        <option id="1083" value="1083--James M. Dunn (JMD)">Dunn, James M.</option>
+                        <option id="1084" value="1084--Loren C. Dunn (LCD)">Dunn, Loren C.</option>
+                        <option id="1085" value="1085--Paul H. Dunn (PHD)">Dunn, Paul H.</option>
+                        <option id="1086" value="1086--G. Homer Durham (GHD)">Durham, G. Homer</option>
+                        <option id="1498" value="1498--Mary R. Durham (MRD)">Durham, Mary R.</option>
+                        <option id="1340" value="1340--Devin G. Durrant (DGD)">Durrant, Devin G.</option>
+                        <option id="1480" value="1480--Timothy J. Dyches (TJD)">Dyches, Timothy J.</option>
+                        <option id="1087" value="1087--Alvin R. Dyer (ARD)">Dyer, Alvin R.</option>
+                        <option id="1088" value="1088--Melanie Eaton (ME)">Eaton, Melanie</option>
+                        <option id="1470" value="1470--Larry Echo Hawk (LEH)">Echo Hawk, Larry</option>
+                        <option id="1089" value="1089--Richard C. Edgley (RCE)">Edgley, Richard C.</option>
+                        <option id="372" value="372--Keith R. Edwards (KRE)">Edwards, Keith R.</option>
+                        <option id="1339" value="1339--R. LaVell Edwards (rLE)">Edwards, R. LaVell</option>
+                        <option id="366" value="366--Stanley G. Ellis (SGE)">Ellis, Stanley G.</option>
+                        <option id="1466" value="1466--Cheryl A. Esplin (CAE)">Esplin, Cheryl A.</option>
+                        <option id="358" value="358--David F. Evans (DFE)">Evans, David F.</option>
+                        <option id="1090" value="1090--Joy F. Evans (JFE)">Evans, Joy F.</option>
+                        <option id="1091" value="1091--Richard L. Evans (RLE)">Evans, Richard L.</option>
+                        <option id="1092" value="1092--Henry B. Eyring (HBE)">Eyring, Henry B.</option>
+                        <option id="1405" value="1405--Enrique R. Falabella (ERF)">Falabella, Enrique R.</option>
+                        <option id="1093" value="1093--James E. Faust (JEF)">Faust, James E.</option>
+                        <option id="1094" value="1094--Vaughn J. Featherstone (VJF)">Featherstone, Vaughn J.</option>
+                        <option id="1443" value="1443--Bradley D. Foster (BDF)">Foster, Bradley D.</option>
+                        <option id="1095" value="1095--Mary F. Foulger (MFF)">Foulger, Mary F.</option>
+                        <option id="1096" value="1096--John E. Fowler (JF)">Fowler, John E.</option>
+                        <option id="1097" value="1097--Addie Fuhrimann (AF)">Fuhrimann, Addie</option>
+                        <option id="1481" value="1481--Randy D. Funk (RDF)">Funk, Randy D.</option>
+                        <option id="1098" value="1098--Ruth H. Funk (RHF)">Funk, Ruth H.</option>
+                        <option id="1099" value="1099--J. Thomas Fyans (JTF)">Fyans, J. Thomas</option>
+                        <option id="1100" value="1100--Daryl H. Garn (DHG)">Garn, Daryl H.</option>
+                        <option id="1419" value="1419--Eduardo Gavarret (EG)">Gavarret, Eduardo</option>
+                        <option id="1471" value="1471--Robert C. Gay (RCG)">Gay, Robert C.</option>
+                        <option id="1101" value="1101--Lloyd P. George (LPG)">George, Lloyd P.</option>
+                        <option id="1102" value="1102--Duane B. Gerrard (DBG)">Gerrard, Duane B.</option>
+                        <option id="1103" value="1103--D. Rex Gerratt (DRG)">Gerratt, D. Rex</option>
+                        <option id="1104" value="1104--Francis M. Gibbons (FMG)">Gibbons, Francis M.</option>
+                        <option id="373" value="373--Larry W. Gibbons (LWG)">Gibbons, Larry W.</option>
+                        <option id="1403" value="1403--George F. Gibbs (GFG)">Gibbs, George F.</option>
+                        <option id="1457" value="1457--Larry M. Gibson (LMG)">Gibson, Larry M.</option>
+                        <option id="1105" value="1105--H. Aldridge Gillespie (HAG)">Gillespie, H. Aldridge</option>
+                        <option id="1106" value="1106--Jack H. Goaslind, Jr. (JHG)">Goaslind, Jr., Jack H.</option>
+                        <option id="1420" value="1420--Carlos A. Godoy (CAG)">Godoy, Carlos A.</option>
+                        <option id="1107" value="1107--Christoffel Golden, Jr. (CG)">Golden, Jr., Christoffel</option>
+                        <option id="1453" value="1453--Gerrit W. Gong (GWG)">Gong, Gerrit W.</option>
+                        <option id="1108" value="1108--Walter F. Gonz&aacute;lez (WFG)">González, Walter F.</option>
+                        <option id="1313" value="1313--Heber J. Grant (HJG)">Grant, Heber J.</option>
+                        <option id="1357" value="1357--Jedediah M. Grant (JMG)">Grant, Jedediah M.</option>
+                        <option id="1109" value="1109--Michaelene P. Grassli (MPG)">Grassli, Michaelene P.</option>
+                        <option id="1110" value="1110--John H. Groberg (JG)">Groberg, John H.</option>
+                        <option id="350" value="350--C. Scott Grow (CSG)">Grow, C. Scott</option>
+                        <option id="1111" value="1111--Bruce C. Hafen (BCH)">Hafen, Bruce C.</option>
+                        <option id="1112" value="1112--David B. Haight (DBH)">Haight, David B.</option>
+                        <option id="1468" value="1468--O. Vincent Haleck (OVH)">Haleck, O. Vincent</option>
+                        <option id="1113" value="1113--Janette C. Hales (JCH)">Hales, Janette C.</option>
+                        <option id="1114" value="1114--Robert D. Hales (RDH)">Hales, Robert D.</option>
+                        <option id="1115" value="1115--Donald L. Hallstrom (DLH)">Hallstrom, Donald L.</option>
+                        <option id="1116" value="1116--Ronald T. Halverson (RTH)">Halverson, Ronald T.</option>
+                        <option id="1483" value="1483--Kevin S. Hamilton (KSH)">Hamilton, Kevin S.</option>
+                        <option id="1117" value="1117--F. Melvin Hammond (FMH)">Hammond, F. Melvin</option>
+                        <option id="1417" value="1417--James J. Hamula (JJH)">Hamula, James J.</option>
+                        <option id="1118" value="1118--Wayne M. Hancock (WMH)">Hancock, Wayne M.</option>
+                        <option id="1119" value="1119--Marion D. Hanks (MDH)">Hanks, Marion D.</option>
+                        <option id="1120" value="1120--W. Eugene Hansen (WEH)">Hansen, W. Eugene</option>
+                        <option id="1121" value="1121--Robert B. Harbertson (RBH)">Harbertson, Robert B.</option>
+                        <option id="1358" value="1358--L. W. Hardy (LWH)">Hardy, L. W.</option>
+                        <option id="1326" value="1326--Rufus K. Hardy (RKH)">Hardy, Rufus K.</option>
+                        <option id="1122" value="1122--Devere Harris (DH)">Harris, Devere</option>
+                        <option id="1495" value="1495--Allen D. Haynie (ADH)">Haynie, Allen D.</option>
+                        <option id="1335" value="1335--Alejandra Hern&aacute;ndez (AH)">Hernández, Alejandra</option>
+                        <option id="1123" value="1123--Keith K. Hilbig (KKH)">Hilbig, Keith K.</option>
+                        <option id="1124" value="1124--George R. Hill, III (GRH)">Hill, III, George R.</option>
+                        <option id="1125" value="1125--Harold G. Hillam (HGH)">Hillam, Harold G.</option>
+                        <option id="1126" value="1126--Gordon B. Hinckley (GBH)">Hinckley, Gordon B.</option>
+                        <option id="359" value="359--Richard G. Hinckley (RGH)">Hinckley, Richard G.</option>
+                        <option id="1127" value="1127--Jeffrey R. Holland (JRH)">Holland, Jeffrey R.</option>
+                        <option id="1128" value="1128--Matthew S. Holland (MSH)">Holland, Matthew S.</option>
+                        <option id="1129" value="1129--F. Burton Howard (FBH)">Howard, F. Burton</option>
+                        <option id="1130" value="1130--Kathleen H. Hughes (KHH)">Hughes, Kathleen H.</option>
+                        <option id="1359" value="1359--Edward Hunter (EH)">Hunter, Edward</option>
+                        <option id="1131" value="1131--Howard W. Hunter (HWH)">Hunter, Howard W.</option>
+                        <option id="1132" value="1132--Milton R. Hunter (MRH)">Hunter, Milton R.</option>
+                        <option id="1360" value="1360--Orson Hyde (OH)">Hyde, Orson</option>
+                        <option id="1133" value="1133--Jeanne Inouye (JI)">Inouye, Jeanne</option>
+                        <option id="1330" value="1330--Thorpe B. Isaacson (TBI)">Isaacson, Thorpe B.</option>
+                        <option id="1305" value="1305--Antoine R. Ivins (ARI)">Ivins, Antoine R.</option>
+                        <option id="1134" value="1134--Elaine L. Jack (ELJ)">Jack, Elaine L.</option>
+                        <option id="1075" value="1075--Jacob de Jager (JdJ)">Jager, Jacob de</option>
+                        <option id="1135" value="1135--Dean Jarman (DJ)">Jarman, Dean</option>
+                        <option id="1136" value="1136--Jay E. Jensen (JEJ)">Jensen, Jay E.</option>
+                        <option id="1137" value="1137--Marlin K. Jensen (MKJ)">Jensen, Marlin K.</option>
+                        <option id="1138" value="1138--Virginia U. Jensen (VUJ)">Jensen, Virginia U.</option>
+                        <option id="1140" value="1140--Malcolm S. Jeppsen (MSJ)">Jeppsen, Malcolm S.</option>
+                        <option id="1139" value="1139--Betty Jo N. Jepsen (BJJ)">Jepsen, Betty Jo N.</option>
+                        <option id="364" value="364--Daniel L. Johnson (DLJ)">Johnson, Daniel L.</option>
+                        <option id="1141" value="1141--Kenneth Johnson (KJ)">Johnson, Kenneth</option>
+                        <option id="351" value="351--Paul V. Johnson (PVJ)">Johnson, Paul V.</option>
+                        <option id="1142" value="1142--J. Kent Jolley (JKJ)">Jolley, J. Kent</option>
+                        <option id="1143" value="1143--Spencer V. Jones (SVJ)">Jones, Spencer V.</option>
+                        <option id="1408" value="1408--Daniel K Judd (DKJ)">Judd, Daniel K</option>
+                        <option id="1490" value="1490--Larry S. Kacher (LSK)">Kacher, Larry S.</option>
+                        <option id="1144" value="1144--Ardeth Greene Kapp (AGK)">Kapp, Ardeth Greene</option>
+                        <option id="1145" value="1145--F. Arthur Kay (FAK)">Kay, F. Arthur</option>
+                        <option id="1448" value="1448--Patrick Kearon (PK)">Kearon, Patrick</option>
+                        <option id="1494" value="1494--Von G. Keetch (VGK)">Keetch, Von G.</option>
+                        <option id="1146" value="1146--L. Lionel Kendrick (LLK)">Kendrick, L. Lionel</option>
+                        <option id="1147" value="1147--W. Rolfe Kerr (WRK)">Kerr, W. Rolfe</option>
+                        <option id="1148" value="1148--Yoshihiko Kikuchi (YK)">Kikuchi, Yoshihiko</option>
+                        <option id="1149" value="1149--Lee Whan Kim (LWK)">Kim, Lee Whan</option>
+                        <option id="1361" value="1361--Heber C. Kimball (HCK)">Kimball, Heber C.</option>
+                        <option id="1150" value="1150--Spencer W. Kimball (SWK)">Kimball, Spencer W.</option>
+                        <option id="1324" value="1324--Oscar A. Kirkham (OAK)">Kirkham, Oscar A.</option>
+                        <option id="1487" value="1487--Jörg Klebingat (JK)">Klebingat, Jörg</option>
+                        <option id="352" value="352--Won Yong Ko (WYK)">Ko, Won Yong</option>
+                        <option id="353" value="353--Paul E. Koelliker (PEK)">Koelliker, Paul E.</option>
+                        <option id="1151" value="1151--Cree-L Kofford (CK)">Kofford, Cree-L</option>
+                        <option id="1152" value="1152--Adney Y. Komatsu (AYK)">Komatsu, Adney Y.</option>
+                        <option id="1406" value="1406--Erich W. Kopischke (EWK)">Kopischke, Erich W.</option>
+                        <option id="1153" value="1153--W. Don Ladd (WDL)">Ladd, W. Don</option>
+                        <option id="354" value="354--Cheryl C. Lant (CCL)">Lant, Cheryl C.</option>
+                        <option id="1154" value="1154--Dean L. Larsen (DLL)">Larsen, Dean L.</option>
+                        <option id="1155" value="1155--Sharon G. Larsen (SGL)">Larsen, Sharon G.</option>
+                        <option id="1156" value="1156--John R. Lasater (JRL)">Lasater, John R.</option>
+                        <option id="1158" value="1158--Fono Lavatai (FL)">Lavatai, Fono</option>
+                        <option id="1450" value="1450--Larry R. Lawrence (LRL)">Lawrence, Larry R.</option>
+                        <option id="1157" value="1157--W. Mack Lawrence (WML)">Lawrence, W. Mack</option>
+                        <option id="1159" value="1159--George P. Lee (GPL)">Lee, George P.</option>
+                        <option id="1160" value="1160--Harold B. Lee (HBL)">Lee, Harold B.</option>
+                        <option id="367" value="367--Margaret S. Lifferth (MSL)">Lifferth, Margaret S.</option>
+                        <option id="1161" value="1161--Agusto A. Lim (AAL)">Lim, Agusto A.</option>
+                        <option id="1162" value="1162--Don Lind (DL)">Lind, Don</option>
+                        <option id="1163" value="1163--Richard P. Lindsay (RPL)">Lindsay, Richard P.</option>
+                        <option id="1317" value="1317--John Longden (JL)">Longden, John</option>
+                        <option id="1164" value="1164--Gerald N. Lund (GNL)">Lund, Gerald N.</option>
+                        <option id="1165" value="1165--Merlin R. Lybbert (MRL)">Lybbert, Merlin R.</option>
+                        <option id="1362" value="1362--Amasa M. Lyman (AML)">Lyman, Amasa M.</option>
+                        <option id="1363" value="1363--Francis M. Lyman (FML)">Lyman, Francis M.</option>
+                        <option id="1327" value="1327--Richard R. Lyman (RRL)">Lyman, Richard R.</option>
+                        <option id="374" value="374--Arch L. Madsen (ALM)">Madsen, Arch L.</option>
+                        <option id="1166" value="1166--John M. Madsen (JMM)">Madsen, John M.</option>
+                        <option id="1167" value="1167--Louise W. Madsen (LWM)">Madsen, Louise W.</option>
+                        <option id="1168" value="1168--Jayne B. Malan (JBM)">Malan, Jayne B.</option>
+                        <option id="1451" value="1451--Per G. Malm (PGM)">Malm, Per G.</option>
+                        <option id="1421" value="1421--Mukai Maphosa (MM)">Maphosa, Mukai</option>
+                        <option id="1491" value="1491--Neill F. Marriott (NFM)">Marriott, Neill F.</option>
+                        <option id="1169" value="1169--Douglas J. Martin (DJM)">Martin, Douglas J.</option>
+                        <option id="1489" value="1489--Hugo E. Martinez (HEM)">Martinez, Hugo E.</option>
+                        <option id="1444" value="1444--James B. Martino (JbM)">Martino, James B.</option>
+                        <option id="1170" value="1170--Helv&eacute;cio Martins (HM)">Martins, Helvécio</option>
+                        <option id="1346" value="1346--Clate W. Mask, Jr. (CWM)">Mask, Jr., Clate W.</option>
+                        <option id="1171" value="1171--James O. Mason (JOM)">Mason, James O.</option>
+                        <option id="375" value="375--Vicki F. Matsumori (VFM)">Matsumori, Vicki F.</option>
+                        <option id="1172" value="1172--Karen Maxwell (KM)">Maxwell, Karen</option>
+                        <option id="1173" value="1173--Neal A. Maxwell (NAM)">Maxwell, Neal A.</option>
+                        <option id="1174" value="1174--Richard J. Maynes (RJM)">Maynes, Richard J.</option>
+                        <option id="1452" value="1452--Jairo Mazzagardi (jM)">Mazzagardi, Jairo</option>
+                        <option id="1175" value="1175--Bruce R. McConkie (BRM)">McConkie, Bruce R.</option>
+                        <option id="1488" value="1488--Carol F. McConkie (CFM)">McConkie, Carol F.</option>
+                        <option id="1447" value="1447--David M. McConkie (DMM)">McConkie, David M.</option>
+                        <option id="1308" value="1308--David O. McKay (DOM)">McKay, David O.</option>
+                        <option id="1331" value="1331--Thomas E. McKay (TEM)">McKay, Thomas E.</option>
+                        <option id="1364" value="1364--David McKenzie (DM)">McKenzie, David</option>
+                        <option id="1176" value="1176--Keith B. McMullin (KBM)">McMullin, Keith B.</option>
+                        <option id="1177" value="1177--Gerald E. Melchin (GEM)">Melchin, Gerald E.</option>
+                        <option id="1178" value="1178--Coleen K. Menlove (CKM)">Menlove, Coleen K.</option>
+                        <option id="1179" value="1179--V. Dallas Merrell (VDM)">Merrell, V. Dallas</option>
+                        <option id="369" value="369--A. Roger Merrill (ARM)">Merrill, A. Roger</option>
+                        <option id="1315" value="1315--Joseph F. Merrill (JFM)">Merrill, Joseph F.</option>
+                        <option id="1502" value="1502--Peter F. Meurs (PFM)">Meurs, Peter F.</option>
+                        <option id="1180" value="1180--Lynn A. Mickelsen (LAM)">Mickelsen, Lynn A.</option>
+                        <option id="1181" value="1181--Dale E. Miller (DEM)">Miller, Dale E.</option>
+                        <option id="1365" value="1365--Aurelius Miner (AM)">Miner, Aurelius</option>
+                        <option id="1182" value="1182--Earl M. Monson (EMM)">Monson, Earl M.</option>
+                        <option id="1183" value="1183--Thomas S. Monson (TSM)">Monson, Thomas S.</option>
+                        <option id="1492" value="1492--Hugo Montoya (hM)">Montoya, Hugo</option>
+                        <option id="1367" value="1367--John Morgan (JM)">Morgan, John</option>
+                        <option id="1366" value="1366--Isaac Morley (IM)">Morley, Isaac</option>
+                        <option id="1309" value="1309--George Q. Morris (GQM)">Morris, George Q.</option>
+                        <option id="1184" value="1184--Alexander B. Morrison (ABM)">Morrison, Alexander B.</option>
+                        <option id="1312" value="1312--Henry D. Moyle (HDM)">Moyle, Henry D.</option>
+                        <option id="1185" value="1185--Joseph C. Muren (JCM)">Muren, Joseph C.</option>
+                        <option id="1186" value="1186--Margaret D. Nadauld (MDN)">Nadauld, Margaret D.</option>
+                        <option id="1187" value="1187--Stephen D. Nadauld (SDN)">Nadauld, Stephen D.</option>
+                        <option id="1368" value="1368--Henry W. Naisbitt (HWN)">Naisbitt, Henry W.</option>
+                        <option id="365" value="365--Marcus B. Nash (MBN)">Nash, Marcus B.</option>
+                        <option id="1505" value="1505--K. Brett Nattress (KBN)">Nattress, K. Brett</option>
+                        <option id="1423" value="1423--Michael A. Neider (MAN)">Neider, Michael A.</option>
+                        <option id="1188" value="1188--Russell M. Nelson (RMN)">Nelson, Russell M.</option>
+                        <option id="1189" value="1189--Dennis B. Neuenschwander (DBN)">Neuenschwander, Dennis B.</option>
+                        <option id="1342" value="1342--Michael Nicholas (MN)">Nicholas, Michael</option>
+                        <option id="1369" value="1369--John Nicholson (JN)">Nicholson, John</option>
+                        <option id="1478" value="1478--S. Gifford Nielsen (SGN)">Nielsen, S. Gifford</option>
+                        <option id="1432" value="1432--Brent H. Nielson (BHN)">Nielson, Brent H.</option>
+                        <option id="1190" value="1190--Dallin H. Oaks (DHO)">Oaks, Dallin H.</option>
+                        <option id="1191" value="1191--Merrill C. Oaks (MCO)">Oaks, Merrill C.</option>
+                        <option id="1192" value="1192--Robert C. Oaks (RCO)">Oaks, Robert C.</option>
+                        <option id="1467" value="1467--Adri&aacute;n Ochoa (AO)">Ochoa, Adrián</option>
+                        <option id="1193" value="1193--Chieko N. Okazaki (CNO)">Okazaki, Chieko N.</option>
+                        <option id="1194" value="1194--Robert F. Orton (RFO)">Orton, Robert F.</option>
+                        <option id="1195" value="1195--Spencer H. Osborn (SHO)">Osborn, Spencer H.</option>
+                        <option id="1482" value="1482--Bonnie L. Oscarson (BLO)">Oscarson, Bonnie L.</option>
+                        <option id="1433" value="1433--Russell T. Osguthorpe (RTO)">Osguthorpe, Russell T.</option>
+                        <option id="1418" value="1418--William D. Oswald (WDO)">Oswald, William D.</option>
+                        <option id="1196" value="1196--Stephen B. Oveson (SBO)">Oveson, Stephen B.</option>
+                        <option id="1499" value="1499--Stephen W. Owen (SWO)">Owen, Stephen W.</option>
+                        <option id="1197" value="1197--Glenn L. Pace (GLP)">Pace, Glenn L.</option>
+                        <option id="1424" value="1424--Allen F. Packer (AFP)">Packer, Allen F.</option>
+                        <option id="1198" value="1198--Boyd K. Packer (BKP)">Packer, Boyd K.</option>
+                        <option id="1199" value="1199--James M. Paramore (JMP)">Paramore, James M.</option>
+                        <option id="1200" value="1200--Bonnie D. Parkin (BdP)">Parkin, Bonnie D.</option>
+                        <option id="1201" value="1201--William W. Parmley (WWP)">Parmley, William W.</option>
+                        <option id="360" value="360--Wolfgang H. Paul (WHP)">Paul, Wolfgang H.</option>
+                        <option id="1202" value="1202--Virginia H. Pearce (VHP)">Pearce, Virginia H.</option>
+                        <option id="1425" value="1425--Kevin W. Pearson (KWP)">Pearson, Kenneth W.</option>
+                        <option id="1370" value="1370--Charles W. Penrose (CWP)">Penrose, Charles W.</option>
+                        <option id="368" value="368--Anthony D. Perkins (ADP)">Perkins, Anthony D.</option>
+                        <option id="1203" value="1203--L. Tom Perry (LTP)">Perry, L. Tom</option>
+                        <option id="1204" value="1204--Mark E. Petersen (MEP)">Petersen, Mark E.</option>
+                        <option id="1205" value="1205--Andrew W. Peterson (AWP)">Peterson, Andrew W.</option>
+                        <option id="1206" value="1206--H. Burke Peterson (HBP)">Peterson, H. Burke</option>
+                        <option id="1207" value="1207--Wayne S. Peterson (WSP)">Peterson, Wayne S.</option>
+                        <option id="361" value="361--Paul B. Pieper (PBP)">Pieper, Paul B.</option>
+                        <option id="1208" value="1208--Patricia P. Pinegar (PpP)">Pinegar, Patricia P.</option>
+                        <option id="1209" value="1209--Rex D. Pinegar (RDP)">Pinegar, Rex D.</option>
+                        <option id="1341" value="1341--C. Frederick Pingel (CFP)">Pingel, C. Frederick</option>
+                        <option id="1210" value="1210--Anne C. Pingree (ACP)">Pingree, Anne C.</option>
+                        <option id="1211" value="1211--Hugh W. Pinnock (HWP)">Pinnock, Hugh W.</option>
+                        <option id="1426" value="1426--Rafael E. Pino (ReP)">Pino, Rafael E.</option>
+                        <option id="1212" value="1212--Ronald E. Poelman (REP)">Poelman, Ronald E.</option>
+                        <option id="1213" value="1213--Bruce D. Porter (BDP)">Porter, Bruce D.</option>
+                        <option id="1214" value="1214--L. Aldin Porter (LAP)">Porter, L. Aldin</option>
+                        <option id="1215" value="1215--Carl B. Pratt (CBP)">Pratt, Carl B.</option>
+                        <option id="1371" value="1371--Orson Pratt (OP)">Pratt, Orson</option>
+                        <option id="1372" value="1372--Parley P. Pratt (PPP)">Pratt, Parley P.</option>
+                        <option id="1336" value="1336--Anne Prescott (AP)">Prescott, Anne</option>
+                        <option id="1343" value="1343--JoAnn Randall (JR)">Randall, JoAnn</option>
+                        <option id="1344" value="1344--Nyle Randall (NR)">Randall, Nyle</option>
+                        <option id="1216" value="1216--Ronald A. Rasband (RAR)">Rasband, Ronald A.</option>
+                        <option id="1217" value="1217--Hartman Rector, Jr. (HR)">Rector, Jr., Hartman</option>
+                        <option id="1218" value="1218--Rex C. Reeve (RCR)">Reeve, Rex C.</option>
+                        <option id="1475" value="1475--Linda S. Reeves (LSR)">Reeves, Linda S.</option>
+                        <option id="1434" value="1434--Dale G. Renlund (DGR)">Renlund, Dale G.</option>
+                        <option id="1373" value="1373--George Reynolds (GR)">Reynolds, George</option>
+                        <option id="1219" value="1219--Sydney S. Reynolds (SSR)">Reynolds, Sydney S.</option>
+                        <option id="1374" value="1374--Charles C. Rich (CCR)">Rich, Charles C.</option>
+                        <option id="1375" value="1375--Franklin D. Richards (FDR)">Richards, Franklin D.</option>
+                        <option id="1220" value="1220--Franklin D. Richards (FdR)">Richards, Franklin D.</option>
+                        <option id="1311" value="1311--George F. Richards (GFR)">Richards, George F.</option>
+                        <option id="1221" value="1221--H. Bryan Richards (HbR)">Richards, H. Bryan</option>
+                        <option id="1456" value="1456--Kent F. Richards (KFR)">Richards, Kent F.</option>
+                        <option id="1222" value="1222--LeGrand Richards (LR)">Richards, LeGrand</option>
+                        <option id="1329" value="1329--Stayner Richards (SR)">Richards, Stayner</option>
+                        <option id="1328" value="1328--Stephen L Richards (SLR)">Richards, Stephen L</option>
+                        <option id="1376" value="1376--Willard Richards (WR)">Richards, Willard</option>
+                        <option id="1462" value="1462--Matthew O. Richardson (MOR)">Richardson, Matthew O.</option>
+                        <option id="1485" value="1485--Randall L. Ridd (RLR)">Ridd, Randall L.</option>
+                        <option id="1223" value="1223--Hans B. Ringger (HBR)">Ringger, Hans B.</option>
+                        <option id="1435" value="1435--Michael T. Ringwood (MTR)">Ringwood, Michael T.</option>
+                        <option id="1224" value="1224--Lynn G. Robbins (LGR)">Robbins, Lynn G.</option>
+                        <option id="1377" value="1377--Brigham H. Roberts (BHR)">Roberts, Brigham H.</option>
+                        <option id="1226" value="1226--Jorge A. Rojas (JAR)">Rojas, Jorge A.</option>
+                        <option id="1227" value="1227--Marion G. Romney (MGR)">Romney, Marion G.</option>
+                        <option id="1225" value="1225--Anne Marie Rose (AMR)">Rose, Anne Marie</option>
+                        <option id="1228" value="1228--Ned B. Rouech&eacute; (NBR)">Roueché, Ned B.</option>
+                        <option id="1229" value="1229--Glen L. Rudd (GLR)">Rudd, Glen L.</option>
+                        <option id="1230" value="1230--Gardner H. Russell (GHR)">Russell, Gardner H.</option>
+                        <option id="1232" value="1232--Robert E. Sackley (RES)">Sackley, Robert E.</option>
+                        <option id="1231" value="1231--Cecil O. Samuelson, Jr. (COS)">Samuelson, Jr., Cecil O.</option>
+                        <option id="1233" value="1233--Han In Sang (HIS)">Sang, Han In</option>
+                        <option id="1504" value="1504--Evan A. Schmutz (EAS)">Schmutz, Evan A.</option>
+                        <option id="1234" value="1234--R. Conrad Schultz (RCS)">Schultz, R. Conrad</option>
+                        <option id="1445" value="1445--Gregory A. Schwitzer (GAs)">Schwitzer, Gregory A.</option>
+                        <option id="1235" value="1235--Richard G. Scott (RGS)">Scott, Richard G.</option>
+                        <option id="1236" value="1236--Doris Sertel (DSe)">Sertel, Doris</option>
+                        <option id="1237" value="1237--Sam K. Shimabukuro (SKS)">Shimabukuro, Sam K.</option>
+                        <option id="1238" value="1238--Naomi M. Shumway (NMS)">Shumway, Naomi M.</option>
+                        <option id="1347" value="1347--W. Douglas Shumway (WDS)">Shumway, W. Douglas</option>
+                        <option id="1239" value="1239--Sterling W. Sill (SWS)">Sill, Sterling W.</option>
+                        <option id="1240" value="1240--Dennis E. Simmons (DeS)">Simmons, Dennis E.</option>
+                        <option id="1241" value="1241--Robert L. Simpson (RLS)">Simpson, Robert L.</option>
+                        <option id="1436" value="1436--Joseph W. Sitati (JWS)">Sitati, Joseph W.</option>
+                        <option id="1242" value="1242--Barbara B. Smith (BBS)">Smith, Barbara B.</option>
+                        <option id="1243" value="1243--Douglas H. Smith (DHS)">Smith, Douglas H.</option>
+                        <option id="1244" value="1244--Eldred G. Smith (EGS)">Smith, Eldred G.</option>
+                        <option id="1378" value="1378--Elias Smith (ESm)">Smith, Elias</option>
+                        <option id="1379" value="1379--George A. Smith (GaS)">Smith, George A.</option>
+                        <option id="1310" value="1310--George Albert Smith (GAS)">Smith, George Albert</option>
+                        <option id="1380" value="1380--John H. Smith (JHS)">Smith, John H.</option>
+                        <option id="1381" value="1381--Joseph F. Smith (JFS)">Smith, Joseph F.</option>
+                        <option id="1320" value="1320--Joseph F. Smith (JfS)">Smith, Joseph F. [Patr.]</option>
+                        <option id="1245" value="1245--Joseph Fielding Smith (jfs)">Smith, Joseph Fielding</option>
+                        <option id="1382" value="1382--Joseph Smith, Jr. (JS)">Smith, Jr., Joseph</option>
+                        <option id="1323" value="1323--Nicholas G. Smith (NGS)">Smith, Nicholas G.</option>
+                        <option id="1246" value="1246--Mary Ellen W. Smoot (MES)">Smoot, Mary Ellen W.</option>
+                        <option id="1383" value="1383--Erastus Snow (ES)">Snow, Erastus</option>
+                        <option id="1384" value="1384--Lorenzo Snow (LS)">Snow, Lorenzo</option>
+                        <option id="355" value="355--Lowell M. Snow (LMS)">Snow, Lowell M.</option>
+                        <option id="1247" value="1247--Steven E. Snow (SES)">Snow, Steven E.</option>
+                        <option id="1401" value="1401--Z. Snow (ZS)">Snow, Z. [Hon.]</option>
+                        <option id="356" value="356--Ulisses Soares (US)">Soares, Ulisses</option>
+                        <option id="1306" value="1306--Alma Sonne (AS)">Sonne, Alma</option>
+                        <option id="1248" value="1248--John Sonnenberg (JSo)">Sonnenberg, John</option>
+                        <option id="1338" value="1338--Philip T. Sonntag (PTS)">Sonntag, Philip T.</option>
+                        <option id="1249" value="1249--David E. Sorensen (DES)">Sorensen, David E.</option>
+                        <option id="1250" value="1250--Lynn A. Sorensen (LAS)">Sorensen, Lynn A.</option>
+                        <option id="1385" value="1385--Daniel Spencer (DS)">Spencer, Daniel</option>
+                        <option id="1251" value="1251--Leigh Stachowski (LSt)">Stachowski, Leigh</option>
+                        <option id="1252" value="1252--Donald L. Staheli (DlS)">Staheli, Donald L.</option>
+                        <option id="1493" value="1493--Vern P. Stanfill (VPS)">Stanfill, Vern P.</option>
+                        <option id="1253" value="1253--F. David Stanley (FDS)">Stanley, F. David</option>
+                        <option id="1254" value="1254--Delbert L. Stapley (DLS)">Stapley, Delbert L.</option>
+                        <option id="1386" value="1386--C. W. Stayner (CWS)">Stayner, C. W.</option>
+                        <option id="1474" value="1474--Carole M. Stephens (CMS)">Stephens, Carole M.</option>
+                        <option id="1255" value="1255--Robert R. Steuer (RRS)">Steuer, Robert R.</option>
+                        <option id="1455" value="1455--Jean A. Stevens (JAS)">Stevens, Jean A.</option>
+                        <option id="1427" value="1427--Gary E. Stevenson (GES)">Stevenson, Gary E.</option>
+                        <option id="1256" value="1256--David R. Stone (DRS)">Stone, David R.</option>
+                        <option id="1257" value="1257--O. Leslie Stone (OLS)">Stone, O. Leslie</option>
+                        <option id="1258" value="1258--H. Bruce Stucki (HBS)">Stucki, H. Bruce</option>
+                        <option id="357" value="357--Paul K. Sybrowsky (PKS)">Sybrowsky, Paul K.</option>
+                        <option id="1259" value="1259--N. Eldon Tanner (NET)">Tanner, N. Eldon</option>
+                        <option id="1260" value="1260--Susan W. Tanner (SwT)">Tanner, Susan W.</option>
+                        <option id="1261" value="1261--Henry D. Taylor (HDT)">Taylor, Henry D.</option>
+                        <option id="1262" value="1262--Jerald L. Taylor (JLT)">Taylor, Jerald L.</option>
+                        <option id="1387" value="1387--John Taylor (JT)">Taylor, John</option>
+                        <option id="1316" value="1316--John H. Taylor (JHT)">Taylor, John H.</option>
+                        <option id="1388" value="1388--Joseph E. Taylor (JET)">Taylor, Joseph E.</option>
+                        <option id="1263" value="1263--Russell C. Taylor (RCT)">Taylor, Russell C.</option>
+                        <option id="1389" value="1389--George Teasdale (GT)">Teasdale, George</option>
+                        <option id="1407" value="1407--Michael J. Teh (MJT)">Teh, Michael J.</option>
+                        <option id="1428" value="1428--Jos&eacute; A. Teixeira (JAT)">Teixeira, José A.</option>
+                        <option id="1264" value="1264--Horacio A. Tenorio (HAT)">Tenorio, Horacio A.</option>
+                        <option id="1409" value="1409--Octaviano Tenorio (OT)">Tenorio, Octaviano</option>
+                        <option id="1390" value="1390--Moses Thatcher (MT)">Thatcher, Moses</option>
+                        <option id="1265" value="1265--Carol B. Thomas (CBT)">Thomas, Carol B.</option>
+                        <option id="1266" value="1266--Shirley W. Thomas (SWT)">Thomas, Shirley W.</option>
+                        <option id="1412" value="1412--Barbara Thompson (BT)">Thompson, Barbara</option>
+                        <option id="1267" value="1267--Earl C. Tingey (ECT)">Tingey, Earl C.</option>
+                        <option id="1333" value="1333--D. Lee Tobler (DLT)">Tobler, D. Lee</option>
+                        <option id="1268" value="1268--Richard E. Turley, Sr. (RET)">Turley, Sr., Richard E.</option>
+                        <option id="1269" value="1269--A. Theodore Tuttle (ATT)">Tuttle, A. Theodore</option>
+                        <option id="1449" value="1449--Juan A. Uceda (JAU)">Uceda, Juan A.</option>
+                        <option id="1270" value="1270--Dieter F. Uchtdorf (DFU)">Uchtdorf, Dieter F.</option>
+                        <option id="1479" value="1479--Arnulfo Valenzuela (AV)">Valenzuela, Arnulfo</option>
+                        <option id="1271" value="1271--John H. Vandenberg (JHV)">Vandenberg, John H.</option>
+                        <option id="1273" value="1273--Peter Vidmar (PV)">Vidmar, Peter</option>
+                        <option id="1272" value="1272--Francisco J. Vi&ntilde;as (FJV)">Viñas, Francisco J.</option>
+                        <option id="1484" value="1484--Terence M. Vinson (TMV)">Vinson, Terence M.</option>
+                        <option id="1461" value="1461--W. Christopher Waddell (WCW)">Waddell, W. Christopher</option>
+                        <option id="1274" value="1274--William R. Walker (WRW)">Walker, William R.</option>
+                        <option id="1391" value="1391--George B. Wallace (GBW)">Wallace, George B.</option>
+                        <option id="1275" value="1275--Susan L. Warner (SLW)">Warner, Susan L.</option>
+                        <option id="1276" value="1276--J. Ballard Washburn (JW)">Washburn, J. Ballard</option>
+                        <option id="1429" value="1429--F. Michael Watson (FMW)">Watson, F. Michael</option>
+                        <option id="1437" value="1437--Kent D. Watson (KDW)">Watson, Kent D.</option>
+                        <option id="1277" value="1277--Gordon T. Watts (GTW)">Watts, Gordon T.</option>
+                        <option id="1392" value="1392--Daniel H. Wells (DHW)">Wells, Daniel H.</option>
+                        <option id="1393" value="1393--Junius F. Wells (JFW)">Wells, Junius F.</option>
+                        <option id="1278" value="1278--Robert E. Wells (REW)">Wells, Robert E.</option>
+                        <option id="1279" value="1279--Stephen A. West (SAW)">West, Stephen A.</option>
+                        <option id="1280" value="1280--Robert J. Whetten (RJW)">Whetten, Robert J.</option>
+                        <option id="1472" value="1472--Scott D. Whiting (SDW)">Whiting, Scott D.</option>
+                        <option id="1394" value="1394--Orson F. Whitney (OFW)">Whitney, Orson F.</option>
+                        <option id="1281" value="1281--Lance B. Wickman (LBW)">Wickman, Lance B.</option>
+                        <option id="1314" value="1314--John A. Widtsoe (JAW)">Widtsoe, John A.</option>
+                        <option id="1282" value="1282--Keith W. Wilcox (KWW)">Wilcox, Keith W.</option>
+                        <option id="1469" value="1469--Larry Y. Wilson (LYW)">Wilson, Larry Y.</option>
+                        <option id="1283" value="1283--Barbara W. Winder (BWW)">Winder, Barbara W.</option>
+                        <option id="1284" value="1284--Richard H. Winkel (RHW)">Winkel, Richard H.</option>
+                        <option id="1285" value="1285--Anne G. Wirthlin (AGW)">Wirthlin, Anne G.</option>
+                        <option id="1286" value="1286--Joseph B. Wirthlin (JBW)">Wirthlin, Joseph B.</option>
+                        <option id="1318" value="1318--Joseph L. Wirthlin (JLW)">Wirthlin, Joseph L.</option>
+                        <option id="1287" value="1287--Richard B. Wirthlin (RBW)">Wirthlin, Richard B.</option>
+                        <option id="1446" value="1446--Rosemary M. Wixom (RMW)">Wixom, Rosemary M.</option>
+                        <option id="1486" value="1486--Chi Hong (Sam) Wong (CHW)">Wong, Chi Hong (Sam)</option>
+                        <option id="1288" value="1288--Lowell D. Wood (LDW)">Wood, Lowell D.</option>
+                        <option id="1289" value="1289--Ray H. Wood (RhW)">Wood, Ray H.</option>
+                        <option id="1290" value="1290--Robert S. Wood (RSW)">Wood, Robert S.</option>
+                        <option id="1395" value="1395--Wilford Woodruff (WW)">Woodruff, Wilford</option>
+                        <option id="1291" value="1291--Durrel A. Woolsey (DAW)">Woolsey, Durrel A.</option>
+                        <option id="1292" value="1292--H. Ross Workman (HRW)">Workman, H. Ross</option>
+                        <option id="1293" value="1293--Ruth B. Wright (RbW)">Wright, Ruth B.</option>
+                        <option id="1463" value="1463--Kazuhiko  Yamashita (KY)">Yamashita, Kazuhiko </option>
+                        <option id="1396" value="1396--Brigham Young (BY)">Young, Brigham</option>
+                        <option id="1307" value="1307--Clifford E. Young (CEY)">Young, Clifford E.</option>
+                        <option id="1294" value="1294--Dwan J. Young (DJY)">Young, Dwan J.</option>
+                        <option id="1398" value="1398--John Young (JnY)">Young, John</option>
+                        <option id="1399" value="1399--Joseph Young (JY)">Young, Joseph</option>
+                        <option id="1397" value="1397--Brigham Young, Jr. (BY2)">Young, Jr., Brigham</option>
+                        <option id="1321" value="1321--Levi Edgar Young (LEY)">Young, Levi Edgar</option>
+                        <option id="1400" value="1400--Lorenzo D. Young (LDY)">Young, Lorenzo D.</option>
+                        <option id="1295" value="1295--S. Dilworth Young (SDY)">Young, S. Dilworth</option>
+                        <option id="1296" value="1296--Tai Kwok Yuen (TKY)">Yuen, Tai Kwok</option>
+                        <option id="1438" value="1438--Jorge F. Zeballos (JFZ)">Zeballos, Jorge F.</option>
+                        <option id="1410" value="1410--Claudio D. Zivic (CDZ)">Zivic, Claudio D.</option>
+                        <option id="1297" value="1297--W. Craig Zwick (WCZ)">Zwick, W. Craig</option>
+                </select></div>
+                <div class="advTitle">Years</div>
+                <div id="yearsSearch" title="Search talks between these years">
+                    <select id="startYearSearch" class="input-small">
+                        <option id="s1830" value ="1830">1830</option>
+                        <option id="s1831" value ="1831">1831</option>
+                        <option id="s1832" value ="1832">1832</option>
+                        <option id="s1833" value ="1833">1833</option>
+                        <option id="s1834" value ="1834">1834</option>
+                        <option id="s1835" value ="1835">1835</option>
+                        <option id="s1836" value ="1836">1836</option>
+                        <option id="s1837" value ="1837">1837</option>
+                        <option id="s1838" value ="1838">1838</option>
+                        <option id="s1839" value ="1839">1839</option>
+                        <option id="s1840" value ="1840">1840</option>
+                        <option id="s1841" value ="1841">1841</option>
+                        <option id="s1842" value ="1842">1842</option>
+                        <option id="s1843" value ="1843">1843</option>
+                        <option id="s1844" value ="1844">1844</option>
+                        <option id="s1845" value ="1845">1845</option>
+                        <option id="s1846" value ="1846">1846</option>
+                        <option id="s1847" value ="1847">1847</option>
+                        <option id="s1848" value ="1848">1848</option>
+                        <option id="s1849" value ="1849">1849</option>
+                        <option id="s1850" value ="1850">1850</option>
+                        <option id="s1851" value ="1851">1851</option>
+                        <option id="s1852" value ="1852">1852</option>
+                        <option id="s1853" value ="1853">1853</option>
+                        <option id="s1854" value ="1854">1854</option>
+                        <option id="s1855" value ="1855">1855</option>
+                        <option id="s1856" value ="1856">1856</option>
+                        <option id="s1857" value ="1857">1857</option>
+                        <option id="s1858" value ="1858">1858</option>
+                        <option id="s1859" value ="1859">1859</option>
+                        <option id="s1860" value ="1860">1860</option>
+                        <option id="s1861" value ="1861">1861</option>
+                        <option id="s1862" value ="1862">1862</option>
+                        <option id="s1863" value ="1863">1863</option>
+                        <option id="s1864" value ="1864">1864</option>
+                        <option id="s1865" value ="1865">1865</option>
+                        <option id="s1866" value ="1866">1866</option>
+                        <option id="s1867" value ="1867">1867</option>
+                        <option id="s1868" value ="1868">1868</option>
+                        <option id="s1869" value ="1869">1869</option>
+                        <option id="s1870" value ="1870">1870</option>
+                        <option id="s1871" value ="1871">1871</option>
+                        <option id="s1872" value ="1872">1872</option>
+                        <option id="s1873" value ="1873">1873</option>
+                        <option id="s1874" value ="1874">1874</option>
+                        <option id="s1875" value ="1875">1875</option>
+                        <option id="s1876" value ="1876">1876</option>
+                        <option id="s1877" value ="1877">1877</option>
+                        <option id="s1878" value ="1878">1878</option>
+                        <option id="s1879" value ="1879">1879</option>
+                        <option id="s1880" value ="1880">1880</option>
+                        <option id="s1881" value ="1881">1881</option>
+                        <option id="s1882" value ="1882">1882</option>
+                        <option id="s1883" value ="1883">1883</option>
+                        <option id="s1884" value ="1884">1884</option>
+                        <option id="s1885" value ="1885">1885</option>
+                        <option id="s1886" value ="1886">1886</option>
+                        <option id="s1887" value ="1887">1887</option>
+                        <option id="s1888" value ="1888">1888</option>
+                        <option id="s1889" value ="1889">1889</option>
+                        <option id="s1890" value ="1890">1890</option>
+                        <option id="s1891" value ="1891">1891</option>
+                        <option id="s1892" value ="1892">1892</option>
+                        <option id="s1893" value ="1893">1893</option>
+                        <option id="s1894" value ="1894">1894</option>
+                        <option id="s1895" value ="1895">1895</option>
+                        <option id="s1896" value ="1896">1896</option>
+                        <option id="s1897" value ="1897">1897</option>
+                        <option id="s1898" value ="1898">1898</option>
+                        <option id="s1899" value ="1899">1899</option>
+                        <option id="s1900" value ="1900">1900</option>
+                        <option id="s1901" value ="1901">1901</option>
+                        <option id="s1902" value ="1902">1902</option>
+                        <option id="s1903" value ="1903">1903</option>
+                        <option id="s1904" value ="1904">1904</option>
+                        <option id="s1905" value ="1905">1905</option>
+                        <option id="s1906" value ="1906">1906</option>
+                        <option id="s1907" value ="1907">1907</option>
+                        <option id="s1908" value ="1908">1908</option>
+                        <option id="s1909" value ="1909">1909</option>
+                        <option id="s1910" value ="1910">1910</option>
+                        <option id="s1911" value ="1911">1911</option>
+                        <option id="s1912" value ="1912">1912</option>
+                        <option id="s1913" value ="1913">1913</option>
+                        <option id="s1914" value ="1914">1914</option>
+                        <option id="s1915" value ="1915">1915</option>
+                        <option id="s1916" value ="1916">1916</option>
+                        <option id="s1917" value ="1917">1917</option>
+                        <option id="s1918" value ="1918">1918</option>
+                        <option id="s1919" value ="1919">1919</option>
+                        <option id="s1920" value ="1920">1920</option>
+                        <option id="s1921" value ="1921">1921</option>
+                        <option id="s1922" value ="1922">1922</option>
+                        <option id="s1923" value ="1923">1923</option>
+                        <option id="s1924" value ="1924">1924</option>
+                        <option id="s1925" value ="1925">1925</option>
+                        <option id="s1926" value ="1926">1926</option>
+                        <option id="s1927" value ="1927">1927</option>
+                        <option id="s1928" value ="1928">1928</option>
+                        <option id="s1929" value ="1929">1929</option>
+                        <option id="s1930" value ="1930">1930</option>
+                        <option id="s1931" value ="1931">1931</option>
+                        <option id="s1932" value ="1932">1932</option>
+                        <option id="s1933" value ="1933">1933</option>
+                        <option id="s1934" value ="1934">1934</option>
+                        <option id="s1935" value ="1935">1935</option>
+                        <option id="s1936" value ="1936">1936</option>
+                        <option id="s1937" value ="1937">1937</option>
+                        <option id="s1938" value ="1938">1938</option>
+                        <option id="s1939" value ="1939">1939</option>
+                        <option id="s1940" value ="1940">1940</option>
+                        <option id="s1941" value ="1941">1941</option>
+                        <option id="s1942" value ="1942">1942</option>
+                        <option id="s1943" value ="1943">1943</option>
+                        <option id="s1944" value ="1944">1944</option>
+                        <option id="s1945" value ="1945">1945</option>
+                        <option id="s1946" value ="1946">1946</option>
+                        <option id="s1947" value ="1947">1947</option>
+                        <option id="s1948" value ="1948">1948</option>
+                        <option id="s1949" value ="1949">1949</option>
+                        <option id="s1950" value ="1950">1950</option>
+                        <option id="s1951" value ="1951">1951</option>
+                        <option id="s1952" value ="1952">1952</option>
+                        <option id="s1953" value ="1953">1953</option>
+                        <option id="s1954" value ="1954">1954</option>
+                        <option id="s1955" value ="1955">1955</option>
+                        <option id="s1956" value ="1956">1956</option>
+                        <option id="s1957" value ="1957">1957</option>
+                        <option id="s1958" value ="1958">1958</option>
+                        <option id="s1959" value ="1959">1959</option>
+                        <option id="s1960" value ="1960">1960</option>
+                        <option id="s1961" value ="1961">1961</option>
+                        <option id="s1962" value ="1962">1962</option>
+                        <option id="s1963" value ="1963">1963</option>
+                        <option id="s1964" value ="1964">1964</option>
+                        <option id="s1965" value ="1965">1965</option>
+                        <option id="s1966" value ="1966">1966</option>
+                        <option id="s1967" value ="1967">1967</option>
+                        <option id="s1968" value ="1968">1968</option>
+                        <option id="s1969" value ="1969">1969</option>
+                        <option id="s1970" value ="1970">1970</option>
+                        <option id="s1971" value ="1971">1971</option>
+                        <option id="s1972" value ="1972">1972</option>
+                        <option id="s1973" value ="1973">1973</option>
+                        <option id="s1974" value ="1974">1974</option>
+                        <option id="s1975" value ="1975">1975</option>
+                        <option id="s1976" value ="1976">1976</option>
+                        <option id="s1977" value ="1977">1977</option>
+                        <option id="s1978" value ="1978">1978</option>
+                        <option id="s1979" value ="1979">1979</option>
+                        <option id="s1980" value ="1980">1980</option>
+                        <option id="s1981" value ="1981">1981</option>
+                        <option id="s1982" value ="1982">1982</option>
+                        <option id="s1983" value ="1983">1983</option>
+                        <option id="s1984" value ="1984">1984</option>
+                        <option id="s1985" value ="1985">1985</option>
+                        <option id="s1986" value ="1986">1986</option>
+                        <option id="s1987" value ="1987">1987</option>
+                        <option id="s1988" value ="1988">1988</option>
+                        <option id="s1989" value ="1989">1989</option>
+                        <option id="s1990" value ="1990">1990</option>
+                        <option id="s1991" value ="1991">1991</option>
+                        <option id="s1992" value ="1992">1992</option>
+                        <option id="s1993" value ="1993">1993</option>
+                        <option id="s1994" value ="1994">1994</option>
+                        <option id="s1995" value ="1995">1995</option>
+                        <option id="s1996" value ="1996">1996</option>
+                        <option id="s1997" value ="1997">1997</option>
+                        <option id="s1998" value ="1998">1998</option>
+                        <option id="s1999" value ="1999">1999</option>
+                        <option id="s2000" value ="2000">2000</option>
+                        <option id="s2001" value ="2001">2001</option>
+                        <option id="s2002" value ="2002">2002</option>
+                        <option id="s2003" value ="2003">2003</option>
+                        <option id="s2004" value ="2004">2004</option>
+                        <option id="s2005" value ="2005">2005</option>
+                        <option id="s2006" value ="2006">2006</option>
+                        <option id="s2007" value ="2007">2007</option>
+                        <option id="s2008" value ="2008">2008</option>
+                        <option id="s2009" value ="2009">2009</option>
+                        <option id="s2010" value ="2010">2010</option>
+                        <option id="s2011" value ="2011">2011</option>
+                        <option id="s2012" value ="2012">2012</option>
+                        <option id="s2013" value ="2013">2013</option>
+                        <option id="s2014" value ="2014">2014</option>
+                        <option id="s2015" value ="2015">2015</option>
+                        <option id="s2016" value ="2016">2016</option>
+                        <option id="s2017" value ="2017">2017</option>
+                    </select><div class="to">To</div><select id="endYearSearch" class="input-small">
+                            <option id="e1830" value ="1830">1830</option>
+                            <option id="e1831" value ="1831">1831</option>
+                            <option id="e1832" value ="1832">1832</option>
+                            <option id="e1833" value ="1833">1833</option>
+                            <option id="e1834" value ="1834">1834</option>
+                            <option id="e1835" value ="1835">1835</option>
+                            <option id="e1836" value ="1836">1836</option>
+                            <option id="e1837" value ="1837">1837</option>
+                            <option id="e1838" value ="1838">1838</option>
+                            <option id="e1839" value ="1839">1839</option>
+                            <option id="e1840" value ="1840">1840</option>
+                            <option id="e1841" value ="1841">1841</option>
+                            <option id="e1842" value ="1842">1842</option>
+                            <option id="e1843" value ="1843">1843</option>
+                            <option id="e1844" value ="1844">1844</option>
+                            <option id="e1845" value ="1845">1845</option>
+                            <option id="e1846" value ="1846">1846</option>
+                            <option id="e1847" value ="1847">1847</option>
+                            <option id="e1848" value ="1848">1848</option>
+                            <option id="e1849" value ="1849">1849</option>
+                            <option id="e1850" value ="1850">1850</option>
+                            <option id="e1851" value ="1851">1851</option>
+                            <option id="e1852" value ="1852">1852</option>
+                            <option id="e1853" value ="1853">1853</option>
+                            <option id="e1854" value ="1854">1854</option>
+                            <option id="e1855" value ="1855">1855</option>
+                            <option id="e1856" value ="1856">1856</option>
+                            <option id="e1857" value ="1857">1857</option>
+                            <option id="e1858" value ="1858">1858</option>
+                            <option id="e1859" value ="1859">1859</option>
+                            <option id="e1860" value ="1860">1860</option>
+                            <option id="e1861" value ="1861">1861</option>
+                            <option id="e1862" value ="1862">1862</option>
+                            <option id="e1863" value ="1863">1863</option>
+                            <option id="e1864" value ="1864">1864</option>
+                            <option id="e1865" value ="1865">1865</option>
+                            <option id="e1866" value ="1866">1866</option>
+                            <option id="e1867" value ="1867">1867</option>
+                            <option id="e1868" value ="1868">1868</option>
+                            <option id="e1869" value ="1869">1869</option>
+                            <option id="e1870" value ="1870">1870</option>
+                            <option id="e1871" value ="1871">1871</option>
+                            <option id="e1872" value ="1872">1872</option>
+                            <option id="e1873" value ="1873">1873</option>
+                            <option id="e1874" value ="1874">1874</option>
+                            <option id="e1875" value ="1875">1875</option>
+                            <option id="e1876" value ="1876">1876</option>
+                            <option id="e1877" value ="1877">1877</option>
+                            <option id="e1878" value ="1878">1878</option>
+                            <option id="e1879" value ="1879">1879</option>
+                            <option id="e1880" value ="1880">1880</option>
+                            <option id="e1881" value ="1881">1881</option>
+                            <option id="e1882" value ="1882">1882</option>
+                            <option id="e1883" value ="1883">1883</option>
+                            <option id="e1884" value ="1884">1884</option>
+                            <option id="e1885" value ="1885">1885</option>
+                            <option id="e1886" value ="1886">1886</option>
+                            <option id="e1887" value ="1887">1887</option>
+                            <option id="e1888" value ="1888">1888</option>
+                            <option id="e1889" value ="1889">1889</option>
+                            <option id="e1890" value ="1890">1890</option>
+                            <option id="e1891" value ="1891">1891</option>
+                            <option id="e1892" value ="1892">1892</option>
+                            <option id="e1893" value ="1893">1893</option>
+                            <option id="e1894" value ="1894">1894</option>
+                            <option id="e1895" value ="1895">1895</option>
+                            <option id="e1896" value ="1896">1896</option>
+                            <option id="e1897" value ="1897">1897</option>
+                            <option id="e1898" value ="1898">1898</option>
+                            <option id="e1899" value ="1899">1899</option>
+                            <option id="e1900" value ="1900">1900</option>
+                            <option id="e1901" value ="1901">1901</option>
+                            <option id="e1902" value ="1902">1902</option>
+                            <option id="e1903" value ="1903">1903</option>
+                            <option id="e1904" value ="1904">1904</option>
+                            <option id="e1905" value ="1905">1905</option>
+                            <option id="e1906" value ="1906">1906</option>
+                            <option id="e1907" value ="1907">1907</option>
+                            <option id="e1908" value ="1908">1908</option>
+                            <option id="e1909" value ="1909">1909</option>
+                            <option id="e1910" value ="1910">1910</option>
+                            <option id="e1911" value ="1911">1911</option>
+                            <option id="e1912" value ="1912">1912</option>
+                            <option id="e1913" value ="1913">1913</option>
+                            <option id="e1914" value ="1914">1914</option>
+                            <option id="e1915" value ="1915">1915</option>
+                            <option id="e1916" value ="1916">1916</option>
+                            <option id="e1917" value ="1917">1917</option>
+                            <option id="e1918" value ="1918">1918</option>
+                            <option id="e1919" value ="1919">1919</option>
+                            <option id="e1920" value ="1920">1920</option>
+                            <option id="e1921" value ="1921">1921</option>
+                            <option id="e1922" value ="1922">1922</option>
+                            <option id="e1923" value ="1923">1923</option>
+                            <option id="e1924" value ="1924">1924</option>
+                            <option id="e1925" value ="1925">1925</option>
+                            <option id="e1926" value ="1926">1926</option>
+                            <option id="e1927" value ="1927">1927</option>
+                            <option id="e1928" value ="1928">1928</option>
+                            <option id="e1929" value ="1929">1929</option>
+                            <option id="e1930" value ="1930">1930</option>
+                            <option id="e1931" value ="1931">1931</option>
+                            <option id="e1932" value ="1932">1932</option>
+                            <option id="e1933" value ="1933">1933</option>
+                            <option id="e1934" value ="1934">1934</option>
+                            <option id="e1935" value ="1935">1935</option>
+                            <option id="e1936" value ="1936">1936</option>
+                            <option id="e1937" value ="1937">1937</option>
+                            <option id="e1938" value ="1938">1938</option>
+                            <option id="e1939" value ="1939">1939</option>
+                            <option id="e1940" value ="1940">1940</option>
+                            <option id="e1941" value ="1941">1941</option>
+                            <option id="e1942" value ="1942">1942</option>
+                            <option id="e1943" value ="1943">1943</option>
+                            <option id="e1944" value ="1944">1944</option>
+                            <option id="e1945" value ="1945">1945</option>
+                            <option id="e1946" value ="1946">1946</option>
+                            <option id="e1947" value ="1947">1947</option>
+                            <option id="e1948" value ="1948">1948</option>
+                            <option id="e1949" value ="1949">1949</option>
+                            <option id="e1950" value ="1950">1950</option>
+                            <option id="e1951" value ="1951">1951</option>
+                            <option id="e1952" value ="1952">1952</option>
+                            <option id="e1953" value ="1953">1953</option>
+                            <option id="e1954" value ="1954">1954</option>
+                            <option id="e1955" value ="1955">1955</option>
+                            <option id="e1956" value ="1956">1956</option>
+                            <option id="e1957" value ="1957">1957</option>
+                            <option id="e1958" value ="1958">1958</option>
+                            <option id="e1959" value ="1959">1959</option>
+                            <option id="e1960" value ="1960">1960</option>
+                            <option id="e1961" value ="1961">1961</option>
+                            <option id="e1962" value ="1962">1962</option>
+                            <option id="e1963" value ="1963">1963</option>
+                            <option id="e1964" value ="1964">1964</option>
+                            <option id="e1965" value ="1965">1965</option>
+                            <option id="e1966" value ="1966">1966</option>
+                            <option id="e1967" value ="1967">1967</option>
+                            <option id="e1968" value ="1968">1968</option>
+                            <option id="e1969" value ="1969">1969</option>
+                            <option id="e1970" value ="1970">1970</option>
+                            <option id="e1971" value ="1971">1971</option>
+                            <option id="e1972" value ="1972">1972</option>
+                            <option id="e1973" value ="1973">1973</option>
+                            <option id="e1974" value ="1974">1974</option>
+                            <option id="e1975" value ="1975">1975</option>
+                            <option id="e1976" value ="1976">1976</option>
+                            <option id="e1977" value ="1977">1977</option>
+                            <option id="e1978" value ="1978">1978</option>
+                            <option id="e1979" value ="1979">1979</option>
+                            <option id="e1980" value ="1980">1980</option>
+                            <option id="e1981" value ="1981">1981</option>
+                            <option id="e1982" value ="1982">1982</option>
+                            <option id="e1983" value ="1983">1983</option>
+                            <option id="e1984" value ="1984">1984</option>
+                            <option id="e1985" value ="1985">1985</option>
+                            <option id="e1986" value ="1986">1986</option>
+                            <option id="e1987" value ="1987">1987</option>
+                            <option id="e1988" value ="1988">1988</option>
+                            <option id="e1989" value ="1989">1989</option>
+                            <option id="e1990" value ="1990">1990</option>
+                            <option id="e1991" value ="1991">1991</option>
+                            <option id="e1992" value ="1992">1992</option>
+                            <option id="e1993" value ="1993">1993</option>
+                            <option id="e1994" value ="1994">1994</option>
+                            <option id="e1995" value ="1995">1995</option>
+                            <option id="e1996" value ="1996">1996</option>
+                            <option id="e1997" value ="1997">1997</option>
+                            <option id="e1998" value ="1998">1998</option>
+                            <option id="e1999" value ="1999">1999</option>
+                            <option id="e2000" value ="2000">2000</option>
+                            <option id="e2001" value ="2001">2001</option>
+                            <option id="e2002" value ="2002">2002</option>
+                            <option id="e2003" value ="2003">2003</option>
+                            <option id="e2004" value ="2004">2004</option>
+                            <option id="e2005" value ="2005">2005</option>
+                            <option id="e2006" value ="2006">2006</option>
+                            <option id="e2007" value ="2007">2007</option>
+                            <option id="e2008" value ="2008">2008</option>
+                            <option id="e2009" value ="2009">2009</option>
+                            <option id="e2010" value ="2010">2010</option>
+                            <option id="e2011" value ="2011">2011</option>
+                            <option id="e2012" value ="2012">2012</option>
+                            <option id="e2013" value ="2013">2013</option>
+                            <option id="e2014" value ="2014">2014</option>
+                            <option id="e2015" value ="2015">2015</option>
+                            <option id="e2016" value ="2016">2016</option>
+                            <option id="e2017" value ="2017" selected>2017</option>
+                    </select>
+                </div>
+                <div class="advTitle">Content Source</div><div class="advTalks">
+                    <label class="checkbox" title="Include General Conference talks">
+                        <input id="genConf" type="checkbox" checked="checked">General Conference 
+                    </label>
+                    <label class="checkbox" title="Include Journal of Discourses">
+                        <input id="jod" type="checkbox" checked="checked">Journal of Discourses
+                    </label>
+                    <label class="checkbox" title="Include Teachings of the Prophet Joseph Smith">
+                        <input id="stpjs" type="checkbox" checked="checked">Scriptural Teachings of the Prophet Joseph Smith
+                    </label>
+                </div>
+                <label class="checkbox" title="Unchecking this box will sort by date">
+                    <input id="talksSortBy" type="checkbox" checked="checked">Sort by Relevance
+                </label>
+            </form>
+            <div class="searchBtnWrapper">
+                <button id="talkSearchBtn" onclick="searchTalks();" title="Start the search" class="btn searchbutton">Search</button>
+                <button title="Reset search form to defaults" id="resetTalksForm" onclick="resetTalksForm();" class="btn">Reset</button>
+            </div>
+        </div>
+    </div> 
+    </div> 
+
+  </div>
+  <div id="blockContentRight">
+    <button type="button" class="toggleVisibilityRight blockContentButton" title="Toggle right panel"/>
+  </div>
+  <button type="button" class="toggleVisibilityRight sidenav sidenavRight" title="Toggle right panel" /><!--
+    -->

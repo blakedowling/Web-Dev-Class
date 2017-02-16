@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Initiate Pipeline Run</title>
+    <link rel="stylesheet" type="text/css" href="form.css" />
+</head>
+<body>
+    <h1>Initiate Pipeline Run</h1>
+    <label for="bookId">Book</label>
+    <select id="bookId">
+        <option value="0">&lt;none&gt;</option>
+        <option value="1">Kilbarchan Parish Record</option>
+        <option value="2">The Ely Ancestry</option>
+    </select>
+    
+    <label>Page Range
+        <input type="text" name="startPage" size="5" value="1"> –
+        <!-- NEEDSWORK: find the endPage value in the database -->
+        <input type="text" name="endPage" size="5" value="100">
+    </label>
+    
+    <h3>Tools</h3>
+    <label><input type="checkbox" id="tool1" name="tools" value="frontier" checked="checked"> FROntIER</label>
+    <label><input type="checkbox" id="tool2" name="tools" value="greendda"> GreenDDA</label>
+    <label><input type="checkbox" id="tool3" name="tools" value="greenfie"> GreenFIE</label>
+    <label><input type="checkbox" id="tool4" name="tools" value="listreader"> ListReader</label>
+    <label><input type="checkbox" id="tool5" name="tools" value="ontoes"> OntoES</label>
+    <label><input type="checkbox" id="tool6" name="tools" value="ontosoar"> OntoSoar</label>
+    
+    <h3>Run Type</h3>
+    <label><input type="radio" name="runtype" checked="checked"> with COMET</label>
+    <label><input type="radio" name="runtype"> without COMET</label>
+    
+    <input type="button" id="initiateRun" value="Run">
+    
+    <a href="home.php">Back</a>
+</body>

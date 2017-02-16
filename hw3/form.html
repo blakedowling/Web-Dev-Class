@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Initiate Pipeline Run</title>
+		<link rel="stylesheet" href="stylesheet.css" />
+
+	</head>
+
+	<body>
+		<header>Amazin Kindle</header>
+		<div id="main">
+			<h1 class="text-center">Initiate Pipeline Run</h1>
+			
+			<div>
+			<label for="bookId"><h3>Book</h3></label>
+				<select id="bookId">
+				    <option value="0">&lt;none&gt;</option>
+				    <option value="1">Kilbarchan Parish Record</option>
+				    <option value="2">The Ely Ancestry</option>
+				</select>
+			</div>
+	
+			<div>
+				<label><h3>Page Range</h3>
+					<input type="text" name="startPage" size="5" value="1"> –
+					<!-- NEEDSWORK: find the endPage value in the database -->
+					<input type="text" name="endPage" size="5" value="100">
+				</label>
+			</div>
+	
+			<div>
+			<h3>Tools</h3>
+				<label><input type="checkbox" id="tool1" name="tools" value="frontier" checked="checked"> FROntIER</label>
+				<label><input type="checkbox" id="tool2" name="tools" value="greendda"> GreenDDA</label>
+				<label><input type="checkbox" id="tool3" name="tools" value="greenfie"> GreenFIE</label>
+				<label><input type="checkbox" id="tool4" name="tools" value="pstreader"> pstReader</label>
+				<label><input type="checkbox" id="tool5" name="tools" value="ontoes"> OntoES</label>
+				<label><input type="checkbox" id="tool6" name="tools" value="ontosoar"> OntoSoar</label>
+			</div>
+	
+			<div>
+				<h3>Run Type</h3>
+				<label><input type="radio" name="runtype" checked="checked"> with COMET</label>
+				<label><input type="radio" name="runtype"> without COMET</label>
+			</div>
+			
+			<div class="text-center">
+				<input type="button" id="initiateRun" class="text-center" value="Run">
+			</div>
+	
+			<!--<a href="home.php">Back</a>-->
+		</div>
+		<footer>
+			<div>
+				<ul>
+					<p><b>Products</b></p>
+					<p>Product 1</p>
+					<p>Product 2</p>
+					<p>Product 3</p>
+				</ul>
+			</div>
+			<div>
+				<ul>
+					<p><b>Get to Know Us</b></p>
+					<p>FAQ</p>
+					<p>About Us</p>
+					<p>Contact</p>
+				</ul>
+			</div>
+			<div>
+				<ul>
+					<p><b>Follow Us</b></p>
+					<p>Facebook</p>
+					<p>Twitter</p>
+					<p>Instagram</p>
+					<p>Snapchat</p>
+				</ul>
+			</div>
+		</footer>
+	</body>
+</html>
