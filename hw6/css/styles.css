@@ -271,3 +271,46 @@ span.verse {
     position: absolute;
     right: 1em;
 }
+
+@media screen and (max-width: 768px) {
+    #content {
+        flex-direction: column;
+        bottom: auto;
+    }
+    
+    #scriptures {
+        order: 2;
+        height: 40vh;
+        max-width: 100%;
+        border-top: 1px solid #aaa;
+    }
+    
+    #map {
+        order: 1;
+        height: 60vh;
+        width: 100%;
+    }
+    
+    div.subtitle {
+        display: none;
+    }
+    
+    .material-icons {
+        font-size: 18px !important;
+    }
+    
+    #header {
+        flex-direction: column;
+    }
+    
+    #crumb {
+        padding: 0;
+        order: 2;
+        text-align: center;
+        flex: 1;
+    }
+    
+    #centerhead {
+        flex: 1;
+    }
+}

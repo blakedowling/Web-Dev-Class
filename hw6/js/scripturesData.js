@@ -63,22 +63,6 @@ let Scriptures = (function() {
         }
     }
     
-    function transitionBreadcrumbs(newCrumbs) {
-        transitionCrossFade(newCrumbs, "crumbs", "#crumb", "ul");
-    }
-    
-    function transitionScriptures(newContent) {
-        transitionCrossFade(newContent, "scriptures", "#scriptures", "*");
-    }
-    
-    function getScriptureCallback(html) {
-        html = $(html);
-        html.find(".navheading").append("<div class=\"nextprev\">" + requestNextPrev + "</div>");
-        
-        transitionScriptures(html);
-        transitionBreadcrumbs(requestedBreadcrumbs);
-    }
-    
     function transitionCrossFade(newContent, property, parentSelector, childSelector) {
         if(animatingElements.hasOwnProperty(property + "In") || animatingElements.hasOwnProperty(property + "Out")) {
             window.setTimeout(transitionCrossFade, 200, newContent);
@@ -117,6 +101,22 @@ let Scriptures = (function() {
         } else {
             $(parentSelector).html(newContent);
         }
+    }
+    
+    function transitionBreadcrumbs(newCrumbs) {
+        transitionCrossFade(newCrumbs, "crumbs", "#crumb", "ul");
+    }
+    
+    function transitionScriptures(newContent) {
+        transitionCrossFade(newContent, "scriptures", "#scriptures", "*");
+    }
+    
+    function getScriptureCallback(html) {
+        html = $(html);
+        html.find(".navheading").append("<div class=\"nextprev\">" + requestNextPrev + "</div>");
+        
+        transitionScriptures(html);
+        transitionBreadcrumbs(requestedBreadcrumbs);
     }
     
     function getScriptureFailed() {
@@ -163,6 +163,32 @@ let Scriptures = (function() {
                 return [prevBook.id, prevBook.numChapters, titleForBookChapter(prevBook, prevBook.numChapters)];
             }
         }
+    }
+    
+    function breadcrumbs(volume, book, chapter) {
+        let crumbs = "<ul><li>";
+        
+        if(volume === undefined) {
+            crumbs += "The scriptures</li>";
+        } else {
+            crumbs += "<a href=\"javascript:void(0);\" onclick=\"Scriptures.hash()\">The scriptures</li>";
+            
+            if (book === undefined) {
+                crumbs += "<li>" + volume.fullName + "</li>";
+            } else {
+                crumbs += "<li><a href=\"javascript:void(0);\" onclick=\"Scriptures.hash("
+                    + volume.id + ")\">" + volume.fullName + "</a></li>";
+            
+                if(chapter === undefined || chapter === 0) {
+                    crumbs += "<li>" + book.toName + "</li>";
+                } else {
+                    crumbs += "<a href=\"javascript:void(0);\" onclick=\"Scriptures.hash(0, " +
+                        book.id + ")\">" + book.toName + "</a></li>";
+                    crumbs += "<li>" + chapter + "</li>";
+                }
+            }
+        }
+        return crumbs + "</ul>";
     }
     
     function navigateChapter(bookId, chapter) {
@@ -232,8 +258,8 @@ let Scriptures = (function() {
             
             volumeArray.forEach(function(volume) {
                 if (volumeId === undefined || volume.id === volumeId) {
-                    navContents += "<div class=\"volume\"><a name=\"v" + volume.id + "\" /><h5>" +
-                        volume.fullName + "</h5></div><div class=\"book\">";
+                    navContents += "<div class=\"volume\"><a name=\"v" + volume.id + "\"/><h5>" +
+                        volume.fullName + "</h5></div><div class=\"books\">";
                     
                     volume.books.forEach(function(book) {
                         navContents += "<a class=\"waves-effect waves-custom waves-ripple btn\" id=\""
@@ -258,37 +284,6 @@ let Scriptures = (function() {
     /*
         PRE-PROCESSING
     */
-    function breadcrumbs(volume, book, chapter) {
-        let crumbs = "<ul><li>";
-        
-        if(volume === undefined) {
-            crumbs += "The scriptures</li>";
-        } else {
-            crumbs += "<a href=\"javascript:void(0);\" onclick=\"Scriptures.hash()\">The scriptures</li>";
-            
-            if (book === undefined) {
-                crumbs += "<li>" + volume.fullName + "</li>";
-            } else {
-                crumbs += "<li><a href=\"javascript:void(0);\" onclick=\"Scriptures.hash("
-                    + volume.id + ")\">" + volume.fullName + "</a></li>";
-            
-                if(chapter === undefined || chapter === 0) {
-                    crumbs += "<li>" + book.toName + "</li>";
-                } else {
-                    crumbs += "<a href=\"javascript:void(0);\" onclick=\"Scriptures.hash(0, " +
-                        book.id + ")\">" + book.toName + "</a></li>";
-                    crumbs += "<li>" + chapter + "</li>";
-                }
-                
-            }
-            
-            
-        }
-        
-        
-        return crumbs + "</ul>";
-    }
-    
     function cacheBooks() {
         volumeArray.forEach(function(volume) {
             let volumeBooks = [];
